@@ -1,0 +1,93 @@
+.menuBar {
+    position: fixed;
+    bottom: 7%;
+    right: 2%;
+  }
+  
+  .menuButton {
+    position: relative;
+    cursor: pointer;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 13%;
+    color: #5c60f5;
+    width: 3.5em;
+    height: 3.5em;
+    /* transition: all 0.3s; */
+    border-radius: 0.5em;
+    background: rgb(255, 255, 255);
+    
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #f1f1f1;
+  }
+  
+  /* label.menuButton {
+    margin: 10px 10px 20px 10px;
+  } */
+ 
+  .menu_item{
+    transition: all 0.3s;
+  }
+ 
+  
+  .menuButton:active {
+    color: #212465;
+    box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+  }
+  
+  .menuState {
+    webkit-appearance: none;
+    display: none;
+    visibility: hidden;
+  }
+  
+  .menuButton span {
+    width: 30px;
+    height: 4px;
+    background: #5c60f5;
+    border-radius: 100px;
+    transition: 0.3s ease;
+  }
+  
+  .menuButton:active span {
+    opacity: 80%;
+  }
+  
+  .menuState:checked ~ * span.top {
+    transform: translateY(290%) rotate(45deg);
+    width: 40px;
+  }
+  
+  .menuState:checked ~ * span.bot {
+    transform: translateY(-270%) rotate(-45deg);
+    width: 40px;
+  }
+  
+  .menuState:checked ~ * span.mid {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  
+  .menuState:not(:checked) ~ .menu_item {
+    transform: translateX(20px);
+    opacity: 0;
+    visibility: hidden;
+  }
+ 
+  .tooltiptext {
+    display: none;
+    min-width: 60px;
+    background-color: rgba(0, 0, 0, 0.66);
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .menu_item:hover .tooltiptext {
+    display: block;
+  }
