@@ -1,86 +1,112 @@
 import React, { useState } from 'react'
 import './Dashboard.css'
-import Customer from './Customer/Customer';
-import Vendor from './Vendor/Vendor';
-import Bill from './Vendor/Slider/Bill';
-import PO from './Vendor/Slider/PO';
-import CreditNotes from './Vendor/Slider/CreditNotes';
+
+import { CgMathPlus } from 'react-icons/cg';
+import { CiEdit } from 'react-icons/ci';
+
+import Vendor from './Purchase/Vendor/Vendor';
+import Bill from './Purchase/Bill/Bill';
+import PO from './Purchase/PO/PO';
+import DebitNotes from './Purchase/Debit Notes/DebitNotes';
+
+import Customer from './Sales/Customer/Customer';
+import Invoice from './Sales/Invoice/Invoice';
+import SalesOrder from './Sales/Sales Order/SalesOrder'
+import CreditNotes from './Sales/Credit Notes/CreditNotes'
+
+import MajorCode from './Accountant/Major Code/MajorCode';
+import MinorCode from './Accountant/Minor Code/MinorCode';
+import ChartOfAcc from './Accountant/Chart of Acc/ChartOfAcc';
+
+import TotalItem from './Items/TotalItem';
+import PurchaseItem from './Items/PurchaseItem';
+import SalesItem from './Items/SalesItem';
 
 export default function Dashboard() {
 
     const [currentStep, setStep] = useState(1);
 
     const showStep = (step) => {
+
+        // ================================== Purchase ==============================================
+
         switch (step) {
             case 1:
                 return <Vendor setStep={setStep} />
             case 2:
-                return <Customer />
-            case 3:
                 return <Bill setStep={setStep} />
-            case 4:
+            case 3:
                 return <PO setStep={setStep} />
+            case 4:
+                return <DebitNotes setStep={setStep} />
+
+            //  ================================== Sales ==============================================
+
             case 5:
+                return <Customer setStep={setStep} />
+            case 6:
+                return <Invoice setStep={setStep} />
+            case 7:
+                return <SalesOrder setStep={setStep} />
+            case 8:
                 return <CreditNotes setStep={setStep} />
+
+            // ================================ Accountant ===============================================
+
+            case 9:
+                return <MajorCode setStep={setStep} />
+            case 10:
+                return <MinorCode setStep={setStep} />
+            case 11:
+                return <ChartOfAcc setStep={setStep} />
+
+            // ================================ Items ===============================================
+
+            case 12:
+                return <TotalItem setStep={setStep} />
+            case 13:
+                return <PurchaseItem setStep={setStep} />
+            case 14:
+                return <SalesItem setStep={setStep} />
         }
     }
 
     return (
         <div className='dashboard'>
-            <header class="bg-surface-primary border-bottom pt-6">
-                <div class="container-fluid" >
-                    <div class="mb-npx">
-                        <div class="row align-items-center">
-                            <div class="col-sm-6 col-12 mb-4 mb-sm-0">
-                                {/* <!-- Title --> */}
-                                <h1 class="h2 mb-4 ls-tight">Fins Dashboard</h1>
-                            </div>
-                            {/* <!-- Actions --> */}
-                            <div class="col-sm-6 col-12 text-sm-end">
-                                <div class="mx-n1">
-                                    <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
-                                        <span class=" pe-2">
-                                            <i class="bi bi-pencil"></i>
-                                        </span>
-                                        <span>Edit</span>
-                                    </a>
-                                    <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
-                                        <span class=" pe-2">
-                                            <i class="bi bi-plus"></i>
-                                        </span>
-                                        <span>Create</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        {/* <!-- Nav --> */}
-                       
-
-
-                            <div class="mt-5">
-                                <input type="radio" name="s" id="vendor" />
-                                <input type="radio" name="s" id="customer" />
-                                <nav className='mini_nav'>
-                                    <div class="mini_nav_slider"></div>
-                                    <label onClick={() => { setStep(1) }} for="vendor">
-                                        Vendors
-                                        
-                                    </label>
-                                    <label onClick={() => { setStep(2) }} for="customer">
-                                        Customer
-                                    </label>
-                                </nav>
-                            </div>
-
-                            {/* <li onClick={() => { setStep(1) }} class="nav-item cursor-pointer" >
-                                <a id="vendor_click" class="nav-link">Vendors</a>
-                            </li>
-                            <li onClick={() => { setStep(2) }} class="nav-item cursor-pointer">
-                                <a id="customer_click" class="nav-link ">Customers</a>
-                            </li> */}
-                
+            <header >
+                <div className='header_heading'>
+                    <h2 style={{fontWeight:"600",color:"white"}}>Fins Dashboard</h2>
+                    <div className='header_div_btn'>
+                        <button className='btn btn-light mx-2 '>Edit <CiEdit style={{fontSize:"20px",margin:"-4px 0 0 0"}}/></button>
+                        <button className='btn btn-light'>Create<CgMathPlus style={{fontSize:"20px",margin:"-4px 4px 0 4px"}}/></button>
                     </div>
                 </div>
+
+
+
+                <div class="mt-3">
+                    <input type="radio" name="s" id="sales"/>
+                    <input type="radio" name="s" id="purchase"/>
+                    <input type="radio" name="s" id="accountant"/>
+                    <input type="radio" name="s" id="items" />
+                    <nav className='mini_nav'>
+                        <div class="mini_nav_slider"></div>
+                        <label onClick={() => { setStep(1) }} for="purchase">
+                            Purchase
+                        </label>
+                        <label onClick={() => { setStep(5) }} for="sales">
+                            Sales
+                        </label>
+                        <label onClick={() => { setStep(9) }} for="accountant">
+                            Accountant
+                        </label>
+                        <label onClick={() => { setStep(12) }} for="items">
+                            Items
+                        </label>
+                    </nav>
+                </div>
+
+
             </header>
             {showStep(currentStep)}
         </div>

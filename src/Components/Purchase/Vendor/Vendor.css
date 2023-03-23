@@ -1,0 +1,56 @@
+.vendor{
+   position: relative;
+}
+.upperCharts{
+   display: flex;
+   height: 45vh;
+   /* border: 1px solid black; */
+   justify-content: space-around;
+   position: absolute;
+   width: 100%;
+   top:75%
+}
+.upperCharts_inside{
+   width: 60%;
+   /* border: 1px solid black; */
+   background: #ffffff;
+   padding: 10px 10px 40px 10px;
+   border-radius: 10px;
+}
+.upperCharts_inside2{
+   width: 37%;
+   /* border: 1px solid black; */
+   background: #172b4d;
+   padding: 10px 10px 40px 10px;
+   border-radius: 10px;
+}
+
+@media only screen and (max-width: 800px){
+   .upperCharts{
+      display: block;
+      padding: 0 10px;
+   }
+   .upperCharts_inside{
+      width: 100%;
+   
+   }
+   .upperCharts_inside2{
+      width: 100%;
+      margin-top: 10px;
+   }
+}
+@media only screen and (max-width: 1200px){
+   .upperCharts{
+      top:123%
+   }
+}
+@media only screen and (max-width: 578px){
+   .upperCharts{
+      top:245%
+   }
+}
+@media only screen and (min-width: 575px) and (max-width: 655px){
+   .upperCharts{
+      top:145%
+   }
+}

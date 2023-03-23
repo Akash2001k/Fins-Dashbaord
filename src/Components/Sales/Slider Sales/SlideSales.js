@@ -1,50 +1,48 @@
 import React, { useState } from 'react'
-import './Slider.css'
-import { IoDocumentTextSharp } from 'react-icons/io5';
-import { RiBillFill } from 'react-icons/ri';
+import './SliderSales.css'
+
+import { RiBillFill,RiUserReceivedFill } from 'react-icons/ri';
 import { MdBorderColor } from 'react-icons/md';
 import { FaStickyNote } from 'react-icons/fa';
 
 
-
-
-export default function Slider({ setStep }) {
+export default function SliderSales({ setStep }) {
 
 
     return (
         <div>
             <nav class="menuBar" >
 
-                <input id="check" type="checkbox" class="menuState" />
-                <div className='menu_item'>
-                    <button class="menuButton" onClick={() => { setStep(1) }}>
-                        <IoDocumentTextSharp style={{ fontSize: "30px" }} />
-                    </button>
-                    <span style={{margin:"-45px 0 0 -85px"}} className="tooltiptext">Vendors</span>
-                </div>
-
-
-                <div className='menu_item'>
-                    <button class="menuButton" onClick={() => { setStep(3) }}>
-                        <RiBillFill style={{ fontSize: "30px" }} />
-                    </button>
-                    <span style={{margin:"-45px 0 0 -57px"}} className="tooltiptext">Bills</span>
-                </div>
-
-
-                <div className='menu_item'>
-                    <button class="menuButton" onClick={() => { setStep(4) }}>
-                        <MdBorderColor style={{ fontSize: "30px" }} />
-                    </button>
-                    <span style={{margin:"-45px 0 0 -140px"}} className="tooltiptext">Purchase Order</span>
-                </div>
-
-
+                <input id="check" type="checkbox" class="menuState"/>
                 <div className='menu_item'>
                     <button class="menuButton" onClick={() => { setStep(5) }}>
+                        <RiUserReceivedFill style={{ fontSize: "30px" }} />
+                    </button>
+                    <span style={{margin:"-50px 0 0 -95px"}} className="tooltiptext">Customer</span>
+                </div>
+
+
+                <div className='menu_item'>
+                    <button class="menuButton" onClick={() => { setStep(6) }}>
+                        <RiBillFill style={{ fontSize: "30px" }} />
+                    </button>
+                    <span style={{margin:"-50px 0 0 -72px"}} className="tooltiptext">Invoice</span>
+                </div>
+
+
+                <div className='menu_item'>
+                    <button class="menuButton" onClick={() => { setStep(7) }}>
+                        <MdBorderColor style={{ fontSize: "30px" }} />
+                    </button>
+                    <span style={{margin:"-50px 0 0 -109px"}} className="tooltiptext">Sales Order</span>
+                </div>
+
+
+                <div className='menu_item'>
+                    <button class="menuButton" onClick={() => { setStep(8) }}>
                         <FaStickyNote style={{ fontSize: "30px" }} />
                     </button>
-                    <span style={{margin:"-45px 0 0 -116px"}} className="tooltiptext">Credit Notes</span>
+                    <span style={{margin:"-50px 0 0 -116px"}} className="tooltiptext">Credit Notes</span>
                 </div>
 
 

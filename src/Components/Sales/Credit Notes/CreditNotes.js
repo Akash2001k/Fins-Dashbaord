@@ -1,11 +1,11 @@
 import React from 'react'
-import Slider from './Slider'
+import SliderSales from '../Slider Sales/SlideSales'
 
 export default function CreditNotes({setStep}) {
   return (
     <div>
       <h2>CreditNotes</h2>
-      <Slider setStep={setStep}/>
+      <SliderSales setStep={setStep}/>
     </div>
   )
 }
