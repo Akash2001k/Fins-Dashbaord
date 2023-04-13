@@ -1,0 +1,33 @@
+[
+    {
+        "Customer_id" : "CUST230001",
+        "Sales_order" : 7
+    },
+    {
+        "Customer_id" : "CUST230002",
+        "Sales_order" : 25
+    },
+    {
+        "Customer_id" : "CUST230003",
+        "Sales_order" : 22
+    },
+    {
+        "Customer_id" : "CUST230004",
+        "Sales_order" : 17
+    },
+    {
+        "Customer_id" : "CUST230005",
+        "Sales_order" : 8
+    },
+    {
+        "Customer_id" : "CUST230006",
+        "Sales_order" : 31
+    },
+    {
+        "Customer_id" : "CUST230007",
+        "Sales_order" : 13
+    },{
+        "Customer_id" : "CUST230008",
+        "Sales_order" : 8
+    }
+]

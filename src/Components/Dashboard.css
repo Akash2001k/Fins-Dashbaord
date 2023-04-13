@@ -79,7 +79,7 @@ header .header_heading{
     header .header_heading{
       display: block;
     }
-    header .header_heading .header_div_btn{
+    header .header_heading .header_indicator{
       margin-top: 10px;
     }
     .mini_nav {

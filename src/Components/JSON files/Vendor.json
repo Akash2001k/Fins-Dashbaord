@@ -1,0 +1,50 @@
+[
+    {
+        "Location": "Delhi",
+        "Total_vendors": 17
+    },
+    {
+        "Location": "Gurgaon HO",
+        "Total_vendors": 21
+    },
+    {
+        "Location": "Gurgaon 2",
+        "Total_vendors":40
+    },
+    {
+        "Location": "Bhiwandi",
+        "Total_vendors": 9
+    },
+    {
+        "Location": "Chennai",
+        "Total_vendors": 14
+    },
+    {
+        "Location": "Bangalore",
+        "Total_vendors": 34
+    },
+    {
+        "Location": "Mumbai",
+        "Total_vendors": 99
+    },
+    {
+        "Location": "Pune",
+        "Total_vendors": 45
+    },
+    {
+        "Location": "Kolkata",
+        "Total_vendors": 11
+    },
+    {
+        "Location": "Lucknow",
+        "Total_vendors": 137
+    },
+    {
+        "Location": "Hyderabad",
+        "Total_vendors": 76
+    },
+    {
+        "Location": "Nagpur",
+        "Total_vendors": 23
+    }
+]

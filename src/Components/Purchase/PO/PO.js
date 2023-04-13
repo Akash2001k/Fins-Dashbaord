@@ -1,149 +1,185 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Slider from '../Slider/Slider'
+import billData from '../../JSON files/Bill.json'
+import VendorLocations from '../../JSON files/Vendor.json'
+import POr from '../../JSON files/PO.json'
 
-export default function PO({ setStep }) {
+import { MdStickyNote2 } from 'react-icons/md';
+import { RiBillFill } from 'react-icons/ri';
+import { BsFillCartCheckFill } from 'react-icons/bs';
+import { HiUsers } from 'react-icons/hi';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Sector, Cell, } from "recharts";
+
+
+export default function PO({ setStep, update }) {
+    const [totaldata, setTotaldata] = useState('')
+    const [totalVendor, setTotalVendor] = useState('')
+    const [totalPO, setTotalPO] = useState('')
+
+    const POrder = POr.map(data => {
+        data.vendor_id = data.vendor_id
+        data.Purchase_order = data.Purchase_order
+        return data
+    })
+
+
+    useEffect(() => {
+        update("Bills")
+
+
+        let total = 0;
+        let totalVen = 0;
+        billData.map((item) => {
+            total = total + item.bill_amt
+        })
+        setTotaldata(total)
+
+        VendorLocations.map((item) => {
+            totalVen = totalVen + item.Total_vendors
+        })
+        setTotalVendor(totalVen)
+
+        let totalPucOr = 0
+        POr.map((item) => {
+            totalPucOr = totalPucOr + item.Purchase_order
+        })
+        setTotalPO(totalPucOr)
+
+    }, [])
     return (
         <>
-            <div className='px-4 pt-3' style={{ height: "20vh", background: "#5e72e4" }}>
+            <div className='position-relative'>
+                <div class="container-fluid " style={{ height: "30vh", background: "#5e72e4" }}>
 
-                <div class="card" style={{ border: "none" }}>
-                    <div class="card-header pb-0 p-3" style={{ border: "none", background: "white" }}>
-                        <div class="d-flex justify-content-between">
-                            <h6 class="mb-2" style={{ fontWeight: "600", color: "#3f3f40" }}>Purchase Order</h6>
+                    <div class="row pt-4">
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" >
+                            <div class="card" style={{ border: "none" }}>
+                                <div class="card-body p-3">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="numbers">
+                                                <p style={{ color: "gray" }} class="text-sm mb-0 text-uppercase font-weight-bold">Total Vendors</p>
+                                                <h5 style={{ fontWeight: "600", fontSize: "30px" }}>
+                                                    {totalVendor}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 text-end">
+                                            <div style={{ background: "linear-gradient(#d93c30, #fa4537)", borderRadius: "50px", width: "60px" }}>
+                                                <HiUsers style={{ fontSize: "60px", color: "white", padding: "10px" }} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                            <div class="card" style={{ border: "none" }}>
+                                <div class="card-body p-3">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="numbers">
+                                                <p style={{ color: "gray" }} class="text-sm mb-0 text-uppercase font-weight-bold">Bill Amount</p>
+                                                <h5 style={{ fontWeight: "600", fontSize: "30px" }}>
+                                                    ₹ {totaldata}
+                                                </h5>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-4 text-end">
+                                            <div style={{ background: "linear-gradient(#41ce97, #219669)", borderRadius: "50px", width: "60px" }}>
+                                                <RiBillFill style={{ fontSize: "60px", color: "white", padding: "11px" }} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                            <div class="card" style={{ border: "none" }}>
+                                <div class="card-body p-3">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="numbers">
+                                                <p class="text-sm mb-0 text-uppercase font-weight-bold" style={{ color: "gray" }}>Purchase Order </p>
+                                                <h5 style={{ fontWeight: "600", fontSize: "30px" }}>
+                                                    {totalPO}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 text-end">
+                                            <div style={{ background: "linear-gradient(#47b7ef, #298fc2)", borderRadius: "50px", width: "60px" }}>
+                                                <BsFillCartCheckFill style={{ fontSize: "60px", color: "white", padding: "12px" }} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="card" style={{ border: "none" }}>
+                                <div class="card-body p-3">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="numbers">
+                                                <p class="text-sm mb-0 text-uppercase font-weight-bold" style={{ color: "gray" }}>Debit Notes</p>
+                                                <h5 style={{ fontWeight: "600", fontSize: "30px" }}>
+                                                    160
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 text-end">
+                                            <div style={{ background: "linear-gradient(#f57041, #db6a23)", borderRadius: "50px", width: "60px" }}>
+                                                <MdStickyNote2 style={{ fontSize: "60px", color: "white", padding: "10px" }} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table align-items-center ">
+
+                </div>
+                <div className='d-flex justify-content-around position-absolute px-3 w-100' style={{ top: "70%" }}>
+                    <div class="card" style={{ width: "48%", height: "55vh", overflow: 'auto', padding: "0 10px" }}>
+                        <div class="card-header pb-0 p-3" style={{ border: "none", background: "white" }}>
+                            <div class="d-flex justify-content-between">
+                                {/* <h6 class="mb-2" style={{ fontWeight: "600", color: "#3f3f40" }}>Total Bill</h6> */}
+                            </div>
+                        </div>
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Voucher No</th>
+                                    <th scope="col">Bill Ammount</th>
+                                </tr>
+                            </thead>
                             <tbody>
-                                <tr>
-                                    <td class="w-30">
-                                        <div class="d-flex px-2 py-1 align-items-center">
-                                            <div>
-                                                <img style={{ width: "40px" }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/United-states_flag_icon_round.svg/2048px-United-states_flag_icon_round.svg.png" alt="Country flag" />
-                                            </div>
-                                            <div class="ms-4">
-                                                <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                                <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>United States</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                            <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>2500</h6>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                            <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>$230,900</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-sm">
-                                        <div class="col text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                            <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>29.9%</h6>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-30">
-                                        <div class="d-flex px-2 py-1 align-items-center">
-                                            <div>
-                                                <img style={{ width: "40px" }} src="https://www.freeiconspng.com/thumbs/germany-flag/circle-flag-lodige-industries-gmbh-study-in-germany-flag-png-10.png" alt="Country flag" />
-                                            </div>
-                                            <div class="ms-4">
-                                                <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                                <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>Germany</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                            <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>3.900</h6>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                            <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>$440,000</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-sm">
-                                        <div class="col text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                            <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>40.22%</h6>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-30">
-                                        <div class="d-flex px-2 py-1 align-items-center">
-                                            <div>
-                                                <img style={{ width: "40px" }} src="https://cdn-icons-png.flaticon.com/512/197/197374.png" alt="Country flag" />
-                                            </div>
-                                            <div class="ms-4">
-                                                <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                                <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>Great Britain</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                            <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>1.400</h6>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                            <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>$190,700</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-sm">
-                                        <div class="col text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                            <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>23.44%</h6>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-30">
-                                        <div class="d-flex px-2 py-1 align-items-center">
-                                            <div>
-                                                <img style={{ width: "40px" }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Brazilian_flag_icon_round.svg/1200px-Brazilian_flag_icon_round.svg.png" alt="Country flag" />
-                                            </div>
-                                            <div class="ms-4">
-                                                <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                                <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>Brasil</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                            <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>562</h6>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                            <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>$143,960</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-sm">
-                                        <div class="col text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                            <h6 class="text-sm mb-0" style={{ fontWeight: "600", color: "#3f3f40" }}>32.14%</h6>
-                                        </div>
-                                    </td>
-                                </tr>
+                                {POr.map((val) =>
+                                    <tr>
+                                        <td >{val.vendor_id}</td>
+                                        <td >{val.Purchase_order}</td>
+                                    </tr>
+                                )}
                             </tbody>
                         </table>
                     </div>
-                </div>
+                    <div style={{ background: "#172b4d", width: "48%", borderRadius: "5px", padding: "20px" }}>
 
+                        <ResponsiveContainer>
+                            <LineChart data={POrder} margin={{ top: 20, right: 45, bottom: 20 }}>
+                                <CartesianGrid vertical={false} />
+                                <XAxis fontSize={12} dataKey="vendor_id" interval={"preserveStartEnd"} />
+                                <YAxis fontSize={12} />
+                                <Tooltip contentStyle={{ backgroundColor: "rgb(179, 210, 242)" }} />
+                                <Line type="monotone" dataKey="Purchase_order" stroke="#5c60f5" activeDot={{ r: 8 }} strokeWidth="4px" />
+                                <Tooltip />
+                                {/* <Legend /> */}
+                            </LineChart>
+                        </ResponsiveContainer>
+                    </div>
+                </div>
             </div>
             <Slider setStep={setStep} />
         </>

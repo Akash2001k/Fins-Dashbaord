@@ -1,0 +1,78 @@
+[
+	{
+		"billing_address_state" : "Nagaland",
+		"Total_customers" : 7
+	},
+	{
+		"billing_address_state" : "ANDHRA PRADESH",
+		"Total_customers" : 1
+	},
+	{
+		"billing_address_state" : "Assam",
+		"Total_customers" : 2
+	},
+	{
+		"billing_address_state" : "Delhi",
+		"Total_customers" : 19
+	},
+	{
+		"billing_address_state" : "Gujarat",
+		"Total_customers" : 1
+	},
+	{
+		"billing_address_state" : "Gujrat",
+		"Total_customers" : 1
+	},
+	{
+		"billing_address_state" : "Haryana",
+		"Total_customers" : 27
+	},
+	{
+		"billing_address_state" : "Jharkhand",
+		"Total_customers" : 1
+	},
+	{
+		"billing_address_state" : "Karnataka",
+		"Total_customers" : 8
+	},
+	{
+		"billing_address_state" : "Karnatka",
+		"Total_customers" : 2
+	},
+	{
+		"billing_address_state" : "Maharashtra",
+		"Total_customers" : 9
+	},
+	{
+		"billing_address_state" : "Maharastra",
+		"Total_customers" : 4
+	},
+	{
+		"billing_address_state" : "Mumbai",
+		"Total_customers" : 1
+	},
+	{
+		"billing_address_state" : "New Delhi",
+		"Total_customers" : 3
+	},
+	{
+		"billing_address_state" : "rajasthan",
+		"Total_customers" : 2
+	},
+	{
+		"billing_address_state" : "Tamil Nadu",
+		"Total_customers" : 6
+	},
+	{
+		"billing_address_state" : "U.P",
+		"Total_customers" : 1
+	},
+	{
+		"billing_address_state" : "Uttar Pradesh",
+		"Total_customers" : 5
+	},
+	{
+		"billing_address_state" : "West Bengal",
+		"Total_customers" : 1
+	}
+]

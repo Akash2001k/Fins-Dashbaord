@@ -1,7 +1,10 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import SliderSales from '../Slider Sales/SlideSales'
 
-export default function SalesOrder({setStep}) {
+export default function SalesOrder({setStep,update}) {
+  useEffect(()=>{
+    update("Sales Order")
+  },[])
   return (
     <div>
         <h2>SalesOrder</h2>

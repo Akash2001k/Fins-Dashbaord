@@ -1,10 +1,13 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import SliderItems from './SliderItems'
 
-export default function PurchaseItem({setStep}) {
+export default function PurchaseItem({setStep,update}) {
+  useEffect(()=>{
+    update("Purchase Item")
+  },[])
   return (
     <div>
-        <h2>PurchaseItem</h2>
+        <h2>Purchase Item</h2>
         <SliderItems setStep={setStep}/>
     </div>
   )

@@ -1,10 +1,13 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import SliderItems from './SliderItems'
 
-export default function TotalItem({setStep}) {
+export default function TotalItem({setStep,update}) {
+  useEffect(()=>{
+    update("Total Item")
+  },[])
   return (
     <div>
-        <h2>TotalItem</h2>
+        <h2>Total Item</h2>
         <SliderItems setStep={setStep}/>
     </div>
   )
